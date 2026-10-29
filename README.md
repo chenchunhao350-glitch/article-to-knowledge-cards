@@ -36,8 +36,8 @@
 skill 由两个文件组成，复制到任一 skill 目录即可，不需要安装依赖：
 
 ```bash
-git clone <repo-url> make-knowledge-cards-repo
-cp -r make-knowledge-cards-repo/skills/make-knowledge-cards ~/.workbuddy/skills/
+git clone https://github.com/chenchunhao350-glitch/article-to-knowledge-cards.git
+cp -r article-to-knowledge-cards/skills/make-knowledge-cards ~/.workbuddy/skills/
 ```
 
 两种作用域按需选：
@@ -172,9 +172,11 @@ cp -r make-knowledge-cards-repo/skills/make-knowledge-cards ~/.workbuddy/skills/
 ## 校验与已验证范围
 
 ```bash
-python <skill-creator>/scripts/quick_validate.py skills/make-knowledge-cards
+python <skill-creator 目录>/scripts/quick_validate.py skills/make-knowledge-cards
 # Skill is valid!
 ```
+
+`<skill-creator 目录>` 指 skill-creator 工具的解压位置，脚本随该工具分发，不在本仓库内。
 
 已实测四类输入：科普原理长文（7 张）、操作教程（7 张）、观点短文（4 张，触发"不足 5 张"分支）、十条清单（10 条合并为 8 张，触发合并分支）。
 
