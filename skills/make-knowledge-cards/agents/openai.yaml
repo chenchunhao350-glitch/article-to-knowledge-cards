@@ -1,0 +1,55 @@
+name: chen123
+version: 0.1.0
+display_name: 知识卡片制作
+summary: 把文章或本地 Markdown/TXT 文件拆成 5-8 张"一张一个知识点"的卡片，每张含标题、核心知识、简明解释、例子或自测问题。
+entrypoint: SKILL.md
+instructions: SKILL.md
+model_hints:
+  temperature: 0.3
+  reasoning: medium
+activation:
+  mode: auto
+  triggers:
+    - 做成知识卡片
+    - 整理成知识卡片
+    - 提炼知识点
+    - 拆成卡片
+    - 帮我做学习卡片
+    - 这篇文章的重点是什么
+  file_types:
+    - md
+    - txt
+  exclude:
+    - 网页抓取
+    - PDF
+    - 图片
+    - Anki 导出
+capabilities:
+  inputs:
+    - 对话中粘贴的文章正文
+    - 本地 Markdown / TXT 文件路径
+  outputs:
+    - Markdown 格式的 5-8 张知识卡片（可少于此数，并说明理由）
+card_schema:
+  - field: 标题
+    rule: 不超过 14 字，脱离上下文也能看懂
+  - field: 核心知识
+    rule: 一句陈述句，不超过 40 字，只讲一个知识点
+  - field: 简明解释
+    rule: 2-4 句，讲清来由、条件或机制，不照抄原文
+  - field: 例子或自测问题
+    rule: 原文有例子则用原文例子；否则改写自测问题，不编造
+constraints:
+  - 一张卡片只讲一个知识点
+  - 删除重复与铺垫性内容
+  - 不编造原文没有的事实、数字、结论、案例
+  - 解释只做原文信息的重述与串联，不新增因果
+  - 自测问题必须能用原文内容回答
+  - 有效知识点不足 5 个时输出实际数量并说明，不为凑数注水
+  - 超过 8 个知识点时合并次要项，并在结尾说明取舍
+  - 不使用脚本、不调用外部服务、不生成导出文件
+unsupported:
+  - 网页抓取
+  - PDF / 图片 / 扫描件
+  - Anki、CSV、JSON 导出
+  - 图形界面与可视化排版

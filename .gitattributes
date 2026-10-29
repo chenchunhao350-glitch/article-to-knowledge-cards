@@ -1,0 +1,12 @@
+# 统一换行符：仓库内一律 LF，Windows 检出不再产生 CRLF 噪音
+* text=auto eol=lf
+
+# Markdown / YAML 视为文本
+*.md   text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+
+# 二进制
+*.png  binary
+*.jpg  binary
+*.zip  binary
